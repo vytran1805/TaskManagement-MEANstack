@@ -1,7 +1,7 @@
 // load express into the app
 const express = require("express");
 const app = express();
-const { mongoose } = require("./db/mongoose");
+const mongoose = require("./db/mongoose");
 const bodyParser = require("body-parser");
 
 /* LOAD IN THE MONGOOSE MODELS */
@@ -52,6 +52,13 @@ app.post("/lists", (req, res) => {
  */
 app.patch("/lists/:id", (req, res) => {
   // The list information (fields) will be passed in via the JSON request body
+  // pass in the id, update the list that it found using the first param as the condition, with the req.body obj
+  List.findOneAndUpdate({ _id: req.params.id }, { $set: req.body }).then(
+    (updatedList) => {
+      res.sendStatus(200); //send the status code of 200 which corresponds to a successful request.
+      // res.send(updatedList);
+    }
+  );
 });
 
 /**
@@ -59,7 +66,12 @@ app.patch("/lists/:id", (req, res) => {
  * Purpose: Delete the record of the list
  * Action: delete the record with the provided id in the url
  */
-app.patch("/lists/:id", (req, res) => {});
+app.delete("/lists/:id", (req, res) => {
+  List.findOneAndRemove({ _id: req.params.id }, { $set: req.body }).then((removedList) => {
+    res.send(removedList);
+  });
+});
+
 // make it listen to the port 3000
 app.listen(3000, () => {
   console.log("Server is listening on port 3000");
