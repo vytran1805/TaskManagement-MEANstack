@@ -7,9 +7,23 @@ const bodyParser = require("body-parser");
 /* LOAD IN THE MONGOOSE MODELS */
 const { List, Task } = require("./db/models");
 
-/* LOAD MIDDLEWARE BODY-PARSER */
+/* LOAD BODY-PARSER MIDDLEWARE  */
 // instructing Express to use body-parser to parse JSON payloads in the request body
 app.use(bodyParser.json());
+
+/**
+ * This MIDDLEWARE sets the necessary headers for enabling Cross-Origin Resource Sharing (CORS).
+ * CORS is a security mechanism implemented in web browsers that restricts cross-origin requests,
+ * i.e., requests made from a different domain, port, or protocol.
+ */
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
 /********************************* ROUTE HANDLERS *************************************************/
 /*********************
  *    LIST ROUTES    *
