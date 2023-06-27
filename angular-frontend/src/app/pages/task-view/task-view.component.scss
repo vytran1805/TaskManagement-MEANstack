@@ -1,27 +1,16 @@
 @import "../../../global-styles.scss";
 
-/***********************************
-*         General styling          *
-************************************/
-/*body of the HTML*/
-.centered-content {
+
+/* Container of the to-do list*/
+.task-manager-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100%;
   height: 100%;
-
-  /* Container of the to-do list*/
-  .task-manager-container {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    max-width: 1000px;
-    max-height: 600px;
-    // border: 1px solid $primary-dark;
-    background-color: $background;
-    border-radius: 5px;
-  }
+  max-width: 1000px;
+  max-height: 600px;
+  // border: 1px solid $primary-dark;
+  background-color: $background;
+  border-radius: 5px;
 }
 /* Title */
 .task-title,
