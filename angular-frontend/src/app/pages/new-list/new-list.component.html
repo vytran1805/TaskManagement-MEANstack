@@ -1,16 +1,18 @@
 <div class="centered-content">
-    <div class="modal-box">
-        <h1 class="title">Create a new list</h1>
+  <div class="modal-box">
+    <h1 class="title">Create a new list</h1>
 
-        <div class="field has-addons">
-            <div class="control">
-              <input class="input" type="text" placeholder="Find a repository">
-            </div>
-            <div class="control">
-              <a class="button is-info">
-                Search
-              </a>
-            </div>
-          </div>
+    <div class="is-expanded">
+      <input #listTitleInput
+        class="input has-background-light"
+        type="text"
+        placeholder="Find a repository"
+      />
     </div>
-</div> 
+    <div class="control button-container">
+      <button class="button" routerLink="/">Cancel</button>
+      <!-- create List with the text from the input -->
+      <button class="button is-info" (click)="createList(listTitleInput.value)">Create</button> 
+    </div>
+  </div>
+</div>

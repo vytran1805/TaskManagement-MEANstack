@@ -19,7 +19,22 @@ export class TaskService {
   createList(title: string) {
     return this.webReqService.post('lists', { title });
   }
-  getList() {
+  /**
+   * Get the list of lists
+   * @returns the list of lists
+   */
+  getLists(): any {
     return this.webReqService.get('lists');
+  }
+  /**
+   * Get the list of tasks with listId
+   * @param listId Id of the list
+   * @returns the tasks within the listId
+   */
+  getTasks(listId: string): any {
+    return this.webReqService.get(`lists/${listId}/tasks`);
+  }
+  deleteList(listId: string) {
+    return this.webReqService.delete(`lists/${listId}`);
   }
 }

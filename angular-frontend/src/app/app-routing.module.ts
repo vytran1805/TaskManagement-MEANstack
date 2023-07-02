@@ -4,8 +4,10 @@ import { TaskViewComponent } from './pages/task-view/task-view.component';
 import { NewListComponent } from './pages/new-list/new-list.component';
 
 const routes: Routes = [
-  { path: '', component: TaskViewComponent },
+  { path: '', redirectTo: 'lists', pathMatch: 'full' }, //pathMatch:'full' means it will take the full path cause angular might default into the prefix
   { path: 'new-list', component: NewListComponent },
+  { path: 'lists', component: TaskViewComponent },
+  { path: 'lists/:listId', component: TaskViewComponent },
 ];
 
 @NgModule({

@@ -5,12 +5,18 @@
 
       <div class="list-menu">
         <a href="" class="list-menu-item is-active">List 1</a>
-        <a href="" class="list-menu-item">List 2</a>
-        <a href="" class="list-menu-item">List 3</a>
-        <a href="" class="list-menu-item">List 4</a>
+        <!-- ng for loop: to iterate over the array of lists 
+          and generate HTML elements for each item in the collection. 
+          It is commonly used to display lists of items dynamically. -->
+        <a
+          class="list-menu-item"
+          *ngFor="let list of lists"
+          [routerLink]="['/lists', list._id]"
+          ><p>{{ list.title }}</p></a
+        >
       </div>
-
-      <button class="list-button" (click)="createNewList()">Add list +</button>
+      <!-- Once click on the button below, navigate to the /new-list page -->
+      <button class="list-button" routerLink="/new-list">Add list +</button>
     </div>
 
     <div class="task-list-container">
@@ -22,8 +28,8 @@
       <div class="task completed">
         <p>This is the task content</p>
       </div>
-      <div class="task">
-        <p>This is the task content</p>
+      <div class="task"*ngFor="let task of tasks">
+        <p>{{ task.title }}</p>
       </div>
     </div>
   </div>

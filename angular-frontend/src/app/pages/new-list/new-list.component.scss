@@ -1,3 +1,5 @@
+@import "../../../global-styles.scss";
+
 .modal-box {
   min-height: 200px;
   width: 100%;
@@ -5,4 +7,19 @@
   background-color: white;
   border-radius: 10px;
   padding: 35px;
+}
+
+input {
+  border: none;
+  box-shadow: none;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+  margin-top: 20px;
+  .is-info {
+    background-color: $title-color;
+  }
 }
